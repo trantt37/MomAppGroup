@@ -91,7 +91,7 @@ public class MainActivityTest {
 
     public void electronicCategoryTest(){
 
-        onView(withId(R.id.BaddItem)).perform(click());
+        onView(withId(R.id.add)).perform(click());
 
         onView(withId(R.id.name_editText)).perform(typeText("iPhone"));
 
@@ -121,7 +121,7 @@ public class MainActivityTest {
 
     public void otherCategoryTest(){
 
-        onView(withId(R.id.BaddItem)).perform(click());
+        onView(withId(R.id.add)).perform(click());
 
         onView(withId(R.id.name_editText)).perform(typeText("tissues"));
 
@@ -151,7 +151,7 @@ public class MainActivityTest {
 
     public void foodCategoryTest(){
 
-        onView(withId(R.id.BaddItem)).perform(click());
+        onView(withId(R.id.add)).perform(click());
 
         onView(withId(R.id.name_editText)).perform(typeText("Banana"));
 
@@ -175,7 +175,7 @@ public class MainActivityTest {
 
     public void addTest(){
 
-        onView(withId(R.id.BaddItem)).perform(click());
+        onView(withId(R.id.add)).perform(click());
 
         onView(withId(R.id.name_editText)).perform(typeText("Dress"));
 
@@ -207,7 +207,7 @@ public class MainActivityTest {
 
     public void subtractTest(){
 
-        onView(withId(R.id.BaddItem)).perform(click());
+        onView(withId(R.id.add)).perform(click());
 
         onView(withId(R.id.name_editText)).perform(typeText("Banana"));
 
@@ -235,7 +235,7 @@ public class MainActivityTest {
 
     public void nameMandatoryTest(){
 
-        onView(withId(R.id.BaddItem)).perform(click());
+        onView(withId(R.id.add)).perform(click());
 
         onView(withId(R.id.quantity_editText)).perform(typeText("2"));
 
@@ -259,7 +259,7 @@ public class MainActivityTest {
 
     public void quantityZeroTest(){
 
-        onView(withId(R.id.BaddItem)).perform(click());
+        onView(withId(R.id.add)).perform(click());
 
         onView(withId(R.id.name_editText)).perform(typeText("Apple"));
 
@@ -285,7 +285,7 @@ public class MainActivityTest {
 
     public void locationMandatoryTest(){
 
-        onView(withId(R.id.BaddItem)).perform(click());
+        onView(withId(R.id.add)).perform(click());
 
         onView(withId(R.id.name_editText)).perform(typeText("Brownies"));
 
@@ -311,7 +311,7 @@ public class MainActivityTest {
 
     public void priceMandatoryTest(){
 
-        onView(withId(R.id.BaddItem)).perform(click());
+        onView(withId(R.id.add)).perform(click());
 
         onView(withId(R.id.name_editText)).perform(typeText("Apple"));
 
@@ -339,7 +339,7 @@ public class MainActivityTest {
 
     public void miscNotMandatoryTest(){
 
-        onView(withId(R.id.BaddItem)).perform(click());
+        onView(withId(R.id.add)).perform(click());
 
         onView(withId(R.id.name_editText)).perform(typeText("Apple"));
 
@@ -363,7 +363,7 @@ public class MainActivityTest {
 
     public void miscNotMandatoryTest2(){
 
-        onView(withId(R.id.BaddItem)).perform(click());
+        onView(withId(R.id.add)).perform(click());
 
         onView(withId(R.id.name_editText)).perform(typeText("Apple"));
 
