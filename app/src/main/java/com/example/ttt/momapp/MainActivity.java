@@ -1,10 +1,8 @@
 package com.example.ttt.momapp;
 
-import android.content.ClipData;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,9 +12,7 @@ import android.widget.ListView;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private ListView mListView;
@@ -24,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     private String value = "";
     private ArrayList<Item> itemList = new ArrayList<Item>();
     private List<String> array;
+    private Boolean selected = false;
+    private String selectedFromList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,15 +54,35 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 position = i;
+                selected = true;
+                selectedFromList =(mListView.getItemAtPosition(position).toString());
             }
         });
 
 
     }
 
-    public void onClick(View v){
-        Button addItem = (Button)findViewById(R.id.add);
-        Button editItem = (Button)findViewById(R.id.edit);
+    public void onClick(View v) {
+        Button addItem = (Button) findViewById(R.id.add);
+        Button editItem = (Button) findViewById(R.id.edit);
+        if (v == editItem) {
+            Intent i = new Intent(MainActivity.this, EditInventory.class);
+            i.putExtra("Name", selectedFromList);
+            startActivity(i);
+        }
+
+
+        if (v == addItem) {
+            if (v.getId() == R.id.add) {
+                Intent i = new Intent(MainActivity.this, InventoryAdd.class);
+                startActivity(i);
+            }
+        }
+    }
+
+  //  public void onClick(View v){
+    //    Button addItem = (Button)findViewById(R.id.add);
+      //  Button editItem = (Button)findViewById(R.id.edit);
 //        if(v == addItem){
        // Intent i = new Intent(MainActivity.this, Main2Activity.class);
 
@@ -76,6 +94,6 @@ public class MainActivity extends AppCompatActivity {
 //            Intent i = new Intent(MainActivity.this, Main2Activity.class);
 //            startActivity(i);
 //        }
-    }
+    //}
 }
 

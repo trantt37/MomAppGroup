@@ -103,5 +103,20 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.insert(TABLE_NAME,null,values);
         db.close();
 
-    }}
+    }
+
+    public boolean updateItem(Item m){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME, m.getName());
+        values.put(COLUMN_COUNT, m.getItemCount());
+        values.put(COLUMN_PRICE, m.getPrice());
+        values.put(COLUMN_MISC, m.getMisc());
+        values.put(COLUMN_CATEGORY, m.getCategory());
+        values.put(COLUMN_EXPIRATION, m.getExpiration());
+        values.put(COLUMN_LOCATION, m.getLocation());
+        db.update(TABLE_NAME, values, "ID = ?", new String[] { "Item" });
+        return true;
+    }
+}
 

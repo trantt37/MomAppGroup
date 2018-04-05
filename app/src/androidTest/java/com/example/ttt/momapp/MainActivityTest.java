@@ -8,11 +8,18 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withSpinnerText;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.instanceOf;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
 /**
@@ -47,5 +54,328 @@ public class MainActivityTest {
         onView(withId(R.id.add))
                 .check(matches(isDisplayed()));
     }
+    //test to show dropdown menu "clothing" and all mandatory fields filled
 
+    @Test
+
+    public void clothingCategoryTest(){
+
+        onView(withId(R.id.BaddItem)).perform(click());
+
+        onView(withId(R.id.name_editText)).perform(typeText("Dress"));
+
+        onView(withId(R.id.quantity_editText)).perform(typeText("1"));
+
+        onView(withId(R.id.location_editText)).perform(typeText("Amanda’s closet"));
+
+        onView(withId(R.id.price_editText)).perform(typeText("12.73"));
+
+        onView(withId(R.id.categoryDropdown)).perform(click());
+
+        //onView(withId(R.id.categoryDropdown)).atPosition(2).perform(click());
+        onView(withId(R.id.categoryDropdown)).perform(click());
+        onData(allOf(is(instanceOf(String.class)), is("Clothing"))).perform(click());
+        onView(withId(R.id.categoryDropdown)).check(matches(withSpinnerText(containsString("Clothing"))));
+
+        onView(withId(R.id.miscNotes_editText)).perform(typeText("Amanda’s prom dress"));
+
+        onView(withId(R.id.Bsave)).perform(click());
+
+    }
+
+
+
+//test to show dropdown menu "electronics" and all mandatory fields filled
+
+    @Test
+
+    public void electronicCategoryTest(){
+
+        onView(withId(R.id.BaddItem)).perform(click());
+
+        onView(withId(R.id.name_editText)).perform(typeText("iPhone"));
+
+        onView(withId(R.id.quantity_editText)).perform(typeText("1"));
+
+        onView(withId(R.id.location_editText)).perform(typeText("bedside table"));
+
+        onView(withId(R.id.price_editText)).perform(typeText("200.00"));
+
+        onView(withId(R.id.categoryDropdown)).perform(click());
+
+        //onView(withId(R.id.categoryDropdown)).atPosition(3).perform(click());
+        onView(withId(R.id.categoryDropdown)).perform(click());
+        onData(allOf(is(instanceOf(String.class)), is("Electronics"))).perform(click());
+        onView(withId(R.id.categoryDropdown)).check(matches(withSpinnerText(containsString("Electronics"))));
+        onView(withId(R.id.miscNotes_editText)).perform(typeText("Anisha’s iPhone"));
+
+        onView(withId(R.id.Bsave)).perform(click());
+
+    }
+
+
+
+//test to show dropdown menu "other" and all mandatory fields filled
+
+    @Test
+
+    public void otherCategoryTest(){
+
+        onView(withId(R.id.BaddItem)).perform(click());
+
+        onView(withId(R.id.name_editText)).perform(typeText("tissues"));
+
+        onView(withId(R.id.quantity_editText)).perform(typeText("5"));
+
+        onView(withId(R.id.location_editText)).perform(typeText("bathroom"));
+
+        onView(withId(R.id.price_editText)).perform(typeText("5.00"));
+
+        onView(withId(R.id.categoryDropdown)).perform(click());
+
+        //onView(withId(R.id.categoryDropdown)).atPosition(4).perform(click());
+        onView(withId(R.id.categoryDropdown)).perform(click());
+        onData(allOf(is(instanceOf(String.class)), is("Other"))).perform(click());
+        onView(withId(R.id.categoryDropdown)).check(matches(withSpinnerText(containsString("Other"))));
+        onView(withId(R.id.miscNotes_editText)).perform(typeText("Timmy’s tissues"));
+
+        onView(withId(R.id.Bsave)).perform(click());
+
+    }
+
+
+
+//test to show dropdown menu in initial "food" category
+
+    @Test
+
+    public void foodCategoryTest(){
+
+        onView(withId(R.id.BaddItem)).perform(click());
+
+        onView(withId(R.id.name_editText)).perform(typeText("Banana"));
+
+        onView(withId(R.id.quantity_editText)).perform(typeText("2"));
+
+        onView(withId(R.id.location_editText)).perform(typeText("kitchen counter"));
+
+        onView(withId(R.id.price_editText)).perform(typeText("2.73"));
+
+        onView(withId(R.id.expirationDate_editText)).perform(typeText("4/8/18"));
+
+        onView(withId(R.id.miscNotes_editText)).perform(typeText("Anisha’s Favorite Bananas"));
+
+        onView(withId(R.id.Bsave)).perform(click());
+
+    }
+
+
+
+    @Test
+
+    public void addTest(){
+
+        onView(withId(R.id.BaddItem)).perform(click());
+
+        onView(withId(R.id.name_editText)).perform(typeText("Dress"));
+
+        onView(withId(R.id.BaddItem)).perform(click());
+
+        onView(withId(R.id.quantity_editText)).perform(typeText("1"));
+
+        onView(withId(R.id.location_editText)).perform(typeText("Amanda’s closet"));
+
+        onView(withId(R.id.price_editText)).perform(typeText("12.73"));
+
+        onView(withId(R.id.categoryDropdown)).perform(click());
+
+        //onView(withId(R.id.categoryDropdown)).atPosition(2).perform(click());
+        onView(withId(R.id.categoryDropdown)).perform(click());
+        onData(allOf(is(instanceOf(String.class)), is("Clothing"))).perform(click());
+        onView(withId(R.id.categoryDropdown)).check(matches(withSpinnerText(containsString("Clothing"))));
+        onView(withId(R.id.miscNotes_editText)).perform(typeText("Amanda’s prom dress"));
+
+        onView(withId(R.id.Bsave)).perform(click());
+
+    }
+
+
+
+//test to show subtract feature
+
+    @Test
+
+    public void subtractTest(){
+
+        onView(withId(R.id.BaddItem)).perform(click());
+
+        onView(withId(R.id.name_editText)).perform(typeText("Banana"));
+
+        onView(withId(R.id.quantity_editText)).perform(typeText("5"));
+
+        onView(withId(R.id.BsubtractItem)).perform(click());
+
+        onView(withId(R.id.location_editText)).perform(typeText("kitchen counter"));
+
+        onView(withId(R.id.price_editText)).perform(typeText("2.73"));
+
+        onView(withId(R.id.expirationDate_editText)).perform(typeText("4/8/18"));
+
+        onView(withId(R.id.miscNotes_editText)).perform(typeText("Anisha’s Favorite Bananas"));
+
+        onView(withId(R.id.Bsave)).perform(click());
+
+    }
+
+
+
+//test to show that name field is mandatory (look for popup)
+
+    @Test
+
+    public void nameMandatoryTest(){
+
+        onView(withId(R.id.BaddItem)).perform(click());
+
+        onView(withId(R.id.quantity_editText)).perform(typeText("2"));
+
+        onView(withId(R.id.location_editText)).perform(typeText("fridge"));
+
+        onView(withId(R.id.price_editText)).perform(typeText("2.73"));
+
+        onView(withId(R.id.expirationDate_editText)).perform(typeText("4/8/18"));
+
+        onView(withId(R.id.miscNotes_editText)).perform(typeText("for the birthday"));
+
+        onView(withId(R.id.Bsave)).perform(click());
+
+    }
+
+
+
+//test to show that quantity field does not need to be altered
+
+    @Test
+
+    public void quantityZeroTest(){
+
+        onView(withId(R.id.BaddItem)).perform(click());
+
+        onView(withId(R.id.name_editText)).perform(typeText("Apple"));
+
+        onView(withId(R.id.location_editText)).perform(typeText("fridge"));
+
+        onView(withId(R.id.price_editText)).perform(typeText("2.73"));
+
+        onView(withId(R.id.expirationDate_editText)).perform(typeText("4/8/18"));
+
+        onView(withId(R.id.miscNotes_editText)).perform(typeText("Amanda’s Favorite Apples"));
+
+        onView(withId(R.id.Bsave)).perform(click());
+
+    }
+
+
+
+
+
+//test to show that location is mandatory
+
+    @Test
+
+    public void locationMandatoryTest(){
+
+        onView(withId(R.id.BaddItem)).perform(click());
+
+        onView(withId(R.id.name_editText)).perform(typeText("Brownies"));
+
+        onView(withId(R.id.quantity_editText)).perform(typeText("2"));
+
+        onView(withId(R.id.BaddItem)).perform(click());
+
+        onView(withId(R.id.price_editText)).perform(typeText("10.00"));
+
+        onView(withId(R.id.expirationDate_editText)).perform(typeText("4/8/18"));
+
+        onView(withId(R.id.miscNotes_editText)).perform(typeText("Bharat’s Brownies"));
+
+        onView(withId(R.id.Bsave)).perform(click());
+
+    }
+
+
+
+//test to show that price is mandatory
+
+    @Test
+
+    public void priceMandatoryTest(){
+
+        onView(withId(R.id.BaddItem)).perform(click());
+
+        onView(withId(R.id.name_editText)).perform(typeText("Apple"));
+
+        onView(withId(R.id.quantity_editText)).perform(typeText("2"));
+
+        onView(withId(R.id.BaddItem)).perform(click());
+
+        onView(withId(R.id.location_editText)).perform(typeText("fridge"));
+
+        onView(withId(R.id.expirationDate_editText)).perform(typeText("4/8/18"));
+
+        onView(withId(R.id.miscNotes_editText)).perform(typeText("Amanda’s Favorite Apples"));
+
+        onView(withId(R.id.Bsave)).perform(click());
+
+    }
+
+
+
+
+
+//test to show that misc is not mandatory
+
+    @Test
+
+    public void miscNotMandatoryTest(){
+
+        onView(withId(R.id.BaddItem)).perform(click());
+
+        onView(withId(R.id.name_editText)).perform(typeText("Apple"));
+
+        onView(withId(R.id.quantity_editText)).perform(typeText("2"));
+
+        onView(withId(R.id.BaddItem)).perform(click());
+
+        onView(withId(R.id.location_editText)).perform(typeText("fridge"));
+
+        onView(withId(R.id.Bsave)).perform(click());
+
+        onView(withId(R.id.expirationDate_editText)).perform(typeText("4/8/18"));
+
+    }
+
+
+
+//test to show that expiration date is not mandatory
+
+    @Test
+
+    public void miscNotMandatoryTest2(){
+
+        onView(withId(R.id.BaddItem)).perform(click());
+
+        onView(withId(R.id.name_editText)).perform(typeText("Apple"));
+
+        onView(withId(R.id.quantity_editText)).perform(typeText("2"));
+
+        onView(withId(R.id.BaddItem)).perform(click());
+
+        onView(withId(R.id.location_editText)).perform(typeText("fridge"));
+
+        onView(withId(R.id.Bsave)).perform(click());
+
+        onView(withId(R.id.miscNotes_editText)).perform(typeText("Amanda’s Favorite Apples"));
+
+    }
 }
