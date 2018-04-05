@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -60,7 +61,7 @@ public class MainActivityTest {
 
     public void clothingCategoryTest(){
 
-        onView(withId(R.id.BaddItem)).perform(click());
+        onView(withId(R.id.add)).perform(click());
 
         onView(withId(R.id.name_editText)).perform(typeText("Dress"));
 
@@ -68,18 +69,18 @@ public class MainActivityTest {
 
         onView(withId(R.id.location_editText)).perform(typeText("Amanda’s closet"));
 
-        onView(withId(R.id.price_editText)).perform(typeText("12.73"));
+        onView(withId(R.id.price_editText)).perform(scrollTo()).perform(typeText("12.73"));
 
-        onView(withId(R.id.categoryDropdown)).perform(click());
+        onView(withId(R.id.categoryDropdown)).perform(scrollTo()).perform(click());
 
         //onView(withId(R.id.categoryDropdown)).atPosition(2).perform(click());
-        onView(withId(R.id.categoryDropdown)).perform(click());
+        onView(withId(R.id.categoryDropdown)).perform(scrollTo()).perform(click());
         onData(allOf(is(instanceOf(String.class)), is("Clothing"))).perform(click());
         onView(withId(R.id.categoryDropdown)).check(matches(withSpinnerText(containsString("Clothing"))));
 
-        onView(withId(R.id.miscNotes_editText)).perform(typeText("Amanda’s prom dress"));
+        onView(withId(R.id.miscNotes_editText)).perform(scrollTo()).perform(typeText("Amanda’s prom dress"));
 
-        onView(withId(R.id.Bsave)).perform(click());
+        onView(withId(R.id.Bsave)).perform(scrollTo()).perform(click());
 
     }
 
@@ -99,9 +100,9 @@ public class MainActivityTest {
 
         onView(withId(R.id.location_editText)).perform(typeText("bedside table"));
 
-        onView(withId(R.id.price_editText)).perform(typeText("200.00"));
+        onView(withId(R.id.price_editText)).perform(scrollTo()).perform(typeText("200.00"));
 
-        onView(withId(R.id.categoryDropdown)).perform(click());
+        onView(withId(R.id.categoryDropdown)).perform(scrollTo()).perform(click());
 
         //onView(withId(R.id.categoryDropdown)).atPosition(3).perform(click());
         onView(withId(R.id.categoryDropdown)).perform(click());
@@ -131,13 +132,13 @@ public class MainActivityTest {
 
         onView(withId(R.id.price_editText)).perform(typeText("5.00"));
 
-        onView(withId(R.id.categoryDropdown)).perform(click());
+        onView(withId(R.id.categoryDropdown)).perform(scrollTo()).perform(click());
 
         //onView(withId(R.id.categoryDropdown)).atPosition(4).perform(click());
-        onView(withId(R.id.categoryDropdown)).perform(click());
+        onView(withId(R.id.categoryDropdown)).perform(scrollTo()).perform(click());
         onData(allOf(is(instanceOf(String.class)), is("Other"))).perform(click());
         onView(withId(R.id.categoryDropdown)).check(matches(withSpinnerText(containsString("Other"))));
-        onView(withId(R.id.miscNotes_editText)).perform(typeText("Timmy’s tissues"));
+        onView(withId(R.id.miscNotes_editText)).perform(scrollTo()).perform(typeText("Timmy’s tissues"));
 
         onView(withId(R.id.Bsave)).perform(click());
 
@@ -161,11 +162,11 @@ public class MainActivityTest {
 
         onView(withId(R.id.price_editText)).perform(typeText("2.73"));
 
-        onView(withId(R.id.expirationDate_editText)).perform(typeText("4/8/18"));
+        onView(withId(R.id.expirationDate_editText)).perform(scrollTo()).perform(typeText("4/8/18"));
 
-        onView(withId(R.id.miscNotes_editText)).perform(typeText("Anisha’s Favorite Bananas"));
+        onView(withId(R.id.miscNotes_editText)).perform(scrollTo()).perform(typeText("Anisha’s Favorite Bananas"));
 
-        onView(withId(R.id.Bsave)).perform(click());
+        onView(withId(R.id.Bsave)).perform(scrollTo()).perform(click());
 
     }
 
@@ -179,7 +180,7 @@ public class MainActivityTest {
 
         onView(withId(R.id.name_editText)).perform(typeText("Dress"));
 
-        onView(withId(R.id.BaddItem)).perform(click());
+        onView(withId(R.id.BaddItem)).perform(scrollTo()).perform(click());
 
         onView(withId(R.id.quantity_editText)).perform(typeText("1"));
 
@@ -187,15 +188,15 @@ public class MainActivityTest {
 
         onView(withId(R.id.price_editText)).perform(typeText("12.73"));
 
-        onView(withId(R.id.categoryDropdown)).perform(click());
+        onView(withId(R.id.categoryDropdown)).perform(scrollTo()).perform(click());
 
         //onView(withId(R.id.categoryDropdown)).atPosition(2).perform(click());
-        onView(withId(R.id.categoryDropdown)).perform(click());
+        onView(withId(R.id.categoryDropdown)).perform(scrollTo()).perform(click());
         onData(allOf(is(instanceOf(String.class)), is("Clothing"))).perform(click());
         onView(withId(R.id.categoryDropdown)).check(matches(withSpinnerText(containsString("Clothing"))));
-        onView(withId(R.id.miscNotes_editText)).perform(typeText("Amanda’s prom dress"));
+        onView(withId(R.id.miscNotes_editText)).perform(scrollTo()).perform(typeText("Amanda’s prom dress"));
 
-        onView(withId(R.id.Bsave)).perform(click());
+        onView(withId(R.id.Bsave)).perform(scrollTo()).perform(click());
 
     }
 
@@ -219,11 +220,11 @@ public class MainActivityTest {
 
         onView(withId(R.id.price_editText)).perform(typeText("2.73"));
 
-        onView(withId(R.id.expirationDate_editText)).perform(typeText("4/8/18"));
+        onView(withId(R.id.expirationDate_editText)).perform(scrollTo()).perform(typeText("4/8/18"));
 
-        onView(withId(R.id.miscNotes_editText)).perform(typeText("Anisha’s Favorite Bananas"));
+        onView(withId(R.id.miscNotes_editText)).perform(scrollTo()).perform(typeText("Anisha’s Favorite Bananas"));
 
-        onView(withId(R.id.Bsave)).perform(click());
+        onView(withId(R.id.Bsave)).perform(scrollTo()).perform(click());
 
     }
 
@@ -243,11 +244,11 @@ public class MainActivityTest {
 
         onView(withId(R.id.price_editText)).perform(typeText("2.73"));
 
-        onView(withId(R.id.expirationDate_editText)).perform(typeText("4/8/18"));
+        onView(withId(R.id.expirationDate_editText)).perform(scrollTo()).perform(typeText("4/8/18"));
 
-        onView(withId(R.id.miscNotes_editText)).perform(typeText("for the birthday"));
+        onView(withId(R.id.miscNotes_editText)).perform(scrollTo()).perform(typeText("for the birthday"));
 
-        onView(withId(R.id.Bsave)).perform(click());
+        onView(withId(R.id.Bsave)).perform(scrollTo()).perform(click());
 
     }
 
@@ -267,11 +268,11 @@ public class MainActivityTest {
 
         onView(withId(R.id.price_editText)).perform(typeText("2.73"));
 
-        onView(withId(R.id.expirationDate_editText)).perform(typeText("4/8/18"));
+        onView(withId(R.id.expirationDate_editText)).perform(scrollTo()).perform(typeText("4/8/18"));
 
-        onView(withId(R.id.miscNotes_editText)).perform(typeText("Amanda’s Favorite Apples"));
+        onView(withId(R.id.miscNotes_editText)).perform(scrollTo()).perform(typeText("Amanda’s Favorite Apples"));
 
-        onView(withId(R.id.Bsave)).perform(click());
+        onView(withId(R.id.Bsave)).perform(scrollTo()).perform(click());
 
     }
 
@@ -291,15 +292,15 @@ public class MainActivityTest {
 
         onView(withId(R.id.quantity_editText)).perform(typeText("2"));
 
-        onView(withId(R.id.BaddItem)).perform(click());
+        onView(withId(R.id.BaddItem)).perform(scrollTo()).perform(click());
 
         onView(withId(R.id.price_editText)).perform(typeText("10.00"));
 
-        onView(withId(R.id.expirationDate_editText)).perform(typeText("4/8/18"));
+        onView(withId(R.id.expirationDate_editText)).perform(scrollTo()).perform(typeText("4/8/18"));
 
-        onView(withId(R.id.miscNotes_editText)).perform(typeText("Bharat’s Brownies"));
+        onView(withId(R.id.miscNotes_editText)).perform(scrollTo()).perform(typeText("Bharat’s Brownies"));
 
-        onView(withId(R.id.Bsave)).perform(click());
+        onView(withId(R.id.Bsave)).perform(scrollTo()).perform(click());
 
     }
 
@@ -317,15 +318,15 @@ public class MainActivityTest {
 
         onView(withId(R.id.quantity_editText)).perform(typeText("2"));
 
-        onView(withId(R.id.BaddItem)).perform(click());
+        onView(withId(R.id.BaddItem)).perform(scrollTo()).perform(click());
 
         onView(withId(R.id.location_editText)).perform(typeText("fridge"));
 
-        onView(withId(R.id.expirationDate_editText)).perform(typeText("4/8/18"));
+        onView(withId(R.id.expirationDate_editText)).perform(scrollTo()).perform(typeText("4/8/18"));
 
-        onView(withId(R.id.miscNotes_editText)).perform(typeText("Amanda’s Favorite Apples"));
+        onView(withId(R.id.miscNotes_editText)).perform(scrollTo()).perform(typeText("Amanda’s Favorite Apples"));
 
-        onView(withId(R.id.Bsave)).perform(click());
+        onView(withId(R.id.Bsave)).perform(scrollTo()).perform(click());
 
     }
 
@@ -345,13 +346,13 @@ public class MainActivityTest {
 
         onView(withId(R.id.quantity_editText)).perform(typeText("2"));
 
-        onView(withId(R.id.BaddItem)).perform(click());
+        onView(withId(R.id.BaddItem)).perform(scrollTo()).perform(click());
 
         onView(withId(R.id.location_editText)).perform(typeText("fridge"));
 
-        onView(withId(R.id.Bsave)).perform(click());
+        onView(withId(R.id.Bsave)).perform(scrollTo()).perform(click());
 
-        onView(withId(R.id.expirationDate_editText)).perform(typeText("4/8/18"));
+        onView(withId(R.id.expirationDate_editText)).perform(scrollTo()).perform(typeText("4/8/18"));
 
     }
 
@@ -369,13 +370,13 @@ public class MainActivityTest {
 
         onView(withId(R.id.quantity_editText)).perform(typeText("2"));
 
-        onView(withId(R.id.BaddItem)).perform(click());
+        onView(withId(R.id.BaddItem)).perform(scrollTo()).perform(click());
 
-        onView(withId(R.id.location_editText)).perform(typeText("fridge"));
+        onView(withId(R.id.location_editText)).perform(scrollTo()).perform(typeText("fridge"));
 
-        onView(withId(R.id.Bsave)).perform(click());
+        onView(withId(R.id.Bsave)).perform(scrollTo()).perform(click());
 
-        onView(withId(R.id.miscNotes_editText)).perform(typeText("Amanda’s Favorite Apples"));
+        onView(withId(R.id.miscNotes_editText)).perform(scrollTo()).perform(typeText("Amanda’s Favorite Apples"));
 
     }
 }
