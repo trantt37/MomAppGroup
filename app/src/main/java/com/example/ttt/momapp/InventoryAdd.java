@@ -40,6 +40,9 @@ public class InventoryAdd extends AppCompatActivity {
         return true;
     }
 
+
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -77,7 +80,7 @@ public class InventoryAdd extends AppCompatActivity {
             double priceNum = Double.parseDouble(priceStr);
 
             if (!nameStr.isEmpty() && quantityNum != 0 && !locationStr.isEmpty() && priceNum != 0){
-                Item item = new Item(nameStr, quantityNum, locationStr, priceNum , expStr, miscStr, catStr);
+                Item item = new Item(nameStr, quantityNum, locationStr, priceNum , expStr, miscStr, catStr, 0);
                 DatabaseHelper helper = new DatabaseHelper(this);
                 helper.insertItem(item);
 
@@ -121,6 +124,13 @@ public class InventoryAdd extends AppCompatActivity {
                 numQ = numQ - 1;
             }
             quantity.setText("" + numQ);
+        }
+    }
+
+    public void onClickPhoto(View v){
+        if (v.getId() == R.id.Btakephoto) {
+            Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+            startActivity(intent);
         }
     }
 

@@ -18,23 +18,73 @@ import android.widget.Toast;
  */
 
 public class EditInventory extends AppCompatActivity {
+    private String selectedName;
+    private int id;
+    protected DatabaseHelper helper;
+    private EditText name;
+    private EditText quantity;
+    private EditText location;
+    private EditText price;
+    private Spinner category;
+    private EditText expDate;
+    private EditText misc;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inventory_menu);
+        setContentView(R.layout.edit_inventory_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        String name = getIntent().getStringExtra("Name");
-//        String quantity = getIntent().getStringExtra("Quantity");
-//        String location = getIntent().getStringExtra("Location");
-//        String price = getIntent().getStringExtra("Price");
-//        String expDate = getIntent().getStringExtra("Expiration");
-//        String misc = getIntent().getStringExtra("Misc");
-        TextView tv = (TextView)findViewById(R.id.name_editText);
-        tv.setText(name);
+        name = (EditText) findViewById(R.id.name_editText);
+        quantity = (EditText) findViewById(R.id.quantity_editText);
+        location = (EditText) findViewById(R.id.location_editText);
+        price = (EditText) findViewById(R.id.price_editText);
+        category = (Spinner) findViewById(R.id.categoryDropdown);
+        expDate = (EditText) findViewById(R.id.expirationDate_editText);
+        misc = (EditText) findViewById(R.id.miscNotes_editText);
 
+//        quantity.setText("5");
+//        name.setText("bob");
+//        price.setText("5.00");
+//        location.setText("jamaica");
+//        expDate.setText("05/03/14");
+//        misc.setText("N/A");
+
+        Toast.makeText(this, "set works", Toast.LENGTH_SHORT).show();
+//
+
+        selectedName = getIntent().getStringExtra("Name");
+//        id = getIntent().getIntExtra("id",0);
+        helper = new DatabaseHelper(this);
+
+        name.setText(selectedName);
+//            quantity.setText(helper.getItemCount(selectedName)+"");
+//            location.setText(helper.getItemLocation(selectedName));
+//            price.setText(helper.getItemPrice(selectedName)+"");
+////            category.setText(helper.getItemCount(id));
+//            expDate.setText(helper.getItemExpiration(selectedName)+"");
+//            misc.setText(helper.getItemMisc(selectedName));
+
+//        EditText tv = (EditText) findViewById(R.id.name_editText);
+//        tv.setText(selectedName);
+//
+//        TextView tvL = (TextView)findViewById(R.id.location_editText);
+//        tvL.setText((CharSequence) helper.getItemLocation(selectedName));
+
+//        TextView tvP = (TextView)findViewById(R.id.price_editText);
+//        tvP.setText((double) helper.getItemPrice(selectedName));
+
+//        if (!helper.getItemExpiration(selectedName).equals("")) {
+//            TextView tvE = (TextView) findViewById(R.id.expirationDate_editText);
+//            tvE.setText((CharSequence) helper.getItemExpiration(selectedName));
+//        }
+//
+//        if (!helper.getItemMisc(selectedName).equals("")) {
+//            TextView tvM = (TextView) findViewById(R.id.miscNotes_editText);
+//            tvM.setText((CharSequence) helper.getItemMisc(selectedName));
+//        }
         Spinner dropdown = findViewById(R.id.categoryDropdown);
         //create a list of items for the spinner.
         final String[] items = new String[]{"Food", "Clothing", "Electronics", "Other"};
@@ -68,14 +118,25 @@ public class EditInventory extends AppCompatActivity {
     }
 
     public void onClickUpdate(View v){
+
         if(v.getId() == R.id.Bupdate){
-            EditText name = (EditText) findViewById(R.id.name_editText);
-            EditText quantity = (EditText) findViewById(R.id.quantity_editText);
-            EditText location = (EditText) findViewById(R.id.location_editText);
-            EditText price = (EditText) findViewById(R.id.price_editText);
-            Spinner category = (Spinner) findViewById(R.id.categoryDropdown);
-            EditText expDate = (EditText) findViewById(R.id.expirationDate_editText);
-            EditText misc = (EditText) findViewById(R.id.miscNotes_editText);
+            name = (EditText) findViewById(R.id.name_editText);
+            quantity = (EditText) findViewById(R.id.quantity_editText);
+            location = (EditText) findViewById(R.id.location_editText);
+            price = (EditText) findViewById(R.id.price_editText);
+            category = (Spinner) findViewById(R.id.categoryDropdown);
+            expDate = (EditText) findViewById(R.id.expirationDate_editText);
+            misc = (EditText) findViewById(R.id.miscNotes_editText);
+//
+//            quantity.setText(helper.getItemCount(selectedName));
+//            location.setText(helper.getItemCount(selectedName));
+//            price.setText(helper.getItemCount(selectedName));
+////            category.setText(helper.getItemCount(id));
+//            expDate.setText(helper.getItemCount(selectedName));
+//            misc.setText(helper.getItemCount(selectedName));
+
+
+
 
             String nameStr = name.getText().toString();
             String quantityStr = quantity.getText().toString();
@@ -85,11 +146,14 @@ public class EditInventory extends AppCompatActivity {
             String expStr = expDate.getText().toString();
             String miscStr = misc.getText().toString();
 
+
+
             int quantityNum = Integer.parseInt(quantityStr);
             double priceNum = Double.parseDouble(priceStr);
 
+
             if (!nameStr.isEmpty() && quantityNum != 0 && !locationStr.isEmpty() && priceNum != 0){
-                Item item = new Item(nameStr, quantityNum, locationStr, priceNum , expStr, miscStr, catStr);
+                Item item = new Item(nameStr, quantityNum, locationStr, priceNum , expStr, miscStr, catStr, 0);
                 DatabaseHelper helper = new DatabaseHelper(this);
                 helper.updateItem(item);
 
@@ -109,6 +173,29 @@ public class EditInventory extends AppCompatActivity {
                 Toast.makeText(this, "Please enter a price", Toast.LENGTH_SHORT).show();
             }
 
+        }
+    }
+    public void onClickAdd(View v){
+        int numQ;
+        if (v.getId() == R.id.BaddItem){
+            TextView quantity = (TextView) findViewById(R.id.quantity_editText);
+            if (!quantity.equals(null)){
+                numQ = Integer.parseInt(quantity.getText().toString());
+                numQ = numQ + 1;
+                quantity.setText("" + numQ);
+            }
+        }
+    }
+
+    public void onClickSubtract(View v){
+        int numQ = 0;
+        if (v.getId() == R.id.BsubtractItem){
+            TextView quantity = (TextView) findViewById(R.id.quantity_editText);
+            if (!quantity.equals("") && !quantity.equals(null)){
+                numQ = Integer.parseInt(quantity.getText().toString());
+                numQ = numQ - 1;
+            }
+            quantity.setText("" + numQ);
         }
     }
 

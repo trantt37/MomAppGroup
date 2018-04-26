@@ -6,9 +6,9 @@ package com.example.ttt.momapp;
 
 public class Item {
     private String name, location, category, expiration, misc;
-    private int itemCount;
+    private int itemCount,id;
     private double price;
-    public Item(String name, int itemCount, String location, double price, String category, String expiration, String misc){
+    public Item(String name, int itemCount, String location, double price, String category, String expiration, String misc,int id){
         this.name = name;
         this.itemCount = itemCount;
         this.location = location;
@@ -16,6 +16,7 @@ public class Item {
         this.category = category;
         this.expiration = expiration;
         this.misc = misc;
+        this.id = id;
     }
 
     public String getName() {
@@ -68,6 +69,14 @@ public class Item {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
 
